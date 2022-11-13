@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from loguru import logger
 import matplotlib.pyplot as plt
 import pandas as pd
+from loguru import logger
 
 from medium_data_bakeoff.ingredients.dask import bake as bake_dask
 from medium_data_bakeoff.ingredients.dask_sql import bake as bake_dask_sql

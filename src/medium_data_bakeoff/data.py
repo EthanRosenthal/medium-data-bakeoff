@@ -37,12 +37,12 @@ def csv_to_parquet(infile: str, outfile: str, sample_size=512_000) -> None:
     columns = json.dumps(columns, indent=2).replace('"', "'")
     query = f"""
     COPY (
-        SELECT * 
+        SELECT *
         FROM read_csv(
-            '{infile}', 
-            columns={columns}, 
-            sample_size={sample_size}, 
-            header=True, 
+            '{infile}',
+            columns={columns},
+            sample_size={sample_size},
+            header=True,
             auto_detect=False
         )
     )

@@ -6,15 +6,15 @@ ENV PIP_NO_CACHE_DIR=on \
     POETRY_VIRTUALENVS_CREATE=false \
     POETRY_VERSION=1.2.2
 
-WORKDIR /app 
+WORKDIR /app
 
-RUN python -m pip install poetry==$POETRY_VERSION 
+RUN python -m pip install poetry==$POETRY_VERSION
 
 COPY pyproject.toml poetry.lock ./
 RUN poetry export --without-hashes -f requirements.txt -o requirements.txt && \
-    python -m pip install -r requirements.txt 
+    python -m pip install -r requirements.txt
 
 COPY src ./src
-COPY kaggle.json /root/.kaggle/kaggle.json 
+COPY kaggle.json /root/.kaggle/kaggle.json
 
-RUN poetry install --no-interaction --no-ansi --only-root 
+RUN poetry install --no-interaction --no-ansi --only-root
