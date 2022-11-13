@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "medium-data-bakeoff"
+version = "0.1.0"
+description = ""
+authors = ["Ethan Rosenthal <ethan@ethanrosenthal.com>"]
+packages = [
+    { include = "medium_data_bakeoff", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "3.9.*"
+pyspark = {version = "3.3.*", extras = ["sql"]}
+dask = {version = "2022.10.*", extras = ["complete"]}
+vaex = "4.14.*"
+polars = "0.14.27"
+duckdb = "0.5.1"
+kaggle = "1.5.*"
+loguru = "^0.6.0"
+dask-sql = "2022.10.*"
+typer = "0.7.*"
+
+[tool.poetry.dev-dependencies]
+black = "^22.10.0"
+pre-commit = "^2.20.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
