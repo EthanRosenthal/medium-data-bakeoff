@@ -11,7 +11,7 @@ Guiding Principles:
 
 Libraries:
 
-- [Dask](https://www.dask.org/)
+- ~~[Dask](https://www.dask.org/)~~ Not currently working on my machine (OOM)
 - [dask-sql](https://dask-sql.readthedocs.io/en/latest/)
 - [DuckDB](https://duckdb.org/)
 - [Polars](https://www.pola.rs/)
