@@ -1,8 +1,8 @@
 import time
 
-from dask.distributed import Client, LocalCluster
 import dask.dataframe as dd
 from dask.diagnostics import ProgressBar
+from dask.distributed import Client, LocalCluster
 
 
 def bake(dataset: str) -> float:

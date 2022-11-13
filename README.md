@@ -31,7 +31,7 @@ The following results are from running the benchmark locally on my desktop that 
 
 ## Dataset
 
-The New York City bikeshare, [Citi Bike](https://citibikenyc.com/homepage), has a real time, [public API](https://ride.citibikenyc.com/system-data). This API conforms to the [General Bikeshare Feed Specification](https://github.com/NABSA/gbfs/blob/master/gbfs.md). As such, this API contains information about the number of bikes and docks available at every station in NYC. 
+The New York City bikeshare, [Citi Bike](https://citibikenyc.com/homepage), has a real time, [public API](https://ride.citibikenyc.com/system-data). This API conforms to the [General Bikeshare Feed Specification](https://github.com/NABSA/gbfs/blob/master/gbfs.md). As such, this API contains information about the number of bikes and docks available at every station in NYC.
 
 Since 2016, I have been pinging the public API every 2 minutes and storing the results. The benchmark dataset contains all of these results, from 8/15/2016 - 12/8/2021. The dataset consists of a collection of 50 CSVs stored [here](https://www.kaggle.com/datasets/rosenthal/citi-bike-stations) on Kaggle. The CSVs total almost 27 GB in size. The files are partitioned by station.
 

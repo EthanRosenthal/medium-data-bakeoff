@@ -1,7 +1,7 @@
 import time
 
-from dask.distributed import Client, LocalCluster
 import dask.dataframe as dd
+from dask.distributed import Client, LocalCluster
 from dask_sql import Context
 
 
@@ -14,7 +14,7 @@ def bake(dataset: str) -> float:
     context.create_table("bike_availability", df)
     res = context.sql(
         """
-        SELECT 
+        SELECT
           station_id
           , AVG(num_bikes_available)
         FROM bike_availability

@@ -2,7 +2,6 @@ from pathlib import Path
 
 import typer
 
-
 app = typer.Typer(name="Medium Data Bakeoff", chain=True)
 
 DEFAULT_ROOT = Path(__file__).parent.parent.parent / "data"
