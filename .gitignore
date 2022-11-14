@@ -134,8 +134,9 @@ dmypy.json
 # Mac stuff
 .DS_Store
 
-# Default data dir
+# Default file writing paths
 data/
+results/
 
 # Kaggle credentials
 kaggle.json
