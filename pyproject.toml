@@ -12,7 +12,7 @@ python = "3.9.*"
 pyspark = {version = "3.3.*", extras = ["sql"]}
 dask = {version = "2022.10.*", extras = ["complete"]}
 vaex = "4.14.*"
-polars = "0.14.27"
+polars = "0.14.28"
 duckdb = "0.5.1"
 kaggle = "1.5.*"
 loguru = "^0.6.0"
