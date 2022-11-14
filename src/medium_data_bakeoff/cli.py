@@ -1,36 +1,44 @@
-from pathlib import Path
-
 import typer
 
-app = typer.Typer(name="Medium Data Bakeoff", chain=True)
-
-DEFAULT_ROOT = Path(__file__).parent.parent.parent / "data"
+app = typer.Typer(name="Medium Data Bakeoff")
 
 
 @app.command(help="Make the dataset for the bakeoff.")
-def make_dataset(
-    root: Path = typer.Option(DEFAULT_ROOT, help="The root path to place all files."),
-    kaggle_dataset: str = typer.Option(
-        "rosenthal/citi-bike-stations",
-        help="The name of the Kaggle dataset to use for benchmarking.",
-    ),
-) -> None:
+def make_dataset() -> None:
     from medium_data_bakeoff.data import construct_dataset
 
-    construct_dataset(root, kaggle_dataset)
+    construct_dataset()
 
 
-@app.command(help="Run the benchmark on the bakeoff dataset.")
+@app.command(
+    help=(
+        "Repartition the dataset into a range of partitions. "
+        "See medium_data_bakeoff.config.PARTITIONS for the range of partitions."
+    )
+)
+def make_partitions() -> None:
+    from medium_data_bakeoff.data import make_partitions
+
+    make_partitions()
+
+
+@app.command(help="Run the bakeoff for a single dataset.")
 def bakeoff(
-    dataset: str = typer.Option(
-        (DEFAULT_ROOT / "parquet" / "*.parquet").as_posix(),
-        help="The name of the dataset. Can be a wildcard string for globbing.",
-    ),
-    results: str = typer.Option(
-        (DEFAULT_ROOT / "results.csv"),
-        help="The name of the file to store the bakeoff results.",
-    ),
+    num_partitions: int = typer.Option(
+        50,
+        help=(
+            "Number of partitions in the benchmark dataset. Default corresponds to "
+            "the dataset default (50)."
+        ),
+    )
 ) -> None:
     from medium_data_bakeoff.bakeoff import bakeoff
 
-    bakeoff(dataset, results)
+    bakeoff(num_partitions)
+
+
+@app.command(help="Run the bakeoff for all partition combinations.")
+def partition_bakeoff() -> None:
+    from medium_data_bakeoff.bakeoff import partition_bakeoff
+
+    partition_bakeoff()

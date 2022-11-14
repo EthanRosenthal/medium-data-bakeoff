@@ -25,7 +25,13 @@ The following results are from running the benchmark locally on my desktop that 
 - 32 GB DDR4-3200 RAM.
 - Ubuntu 16.04 😱
 
-![results/benchmark.png](results/benchmark.png)
+Original 50-partition dataset:
+
+![assets/benchmark.png](assets/benchmark.png)
+
+Bakeoff as a function of partitions:
+
+![assets/partition_benchmark.png](assets/partition_benchmark.png)
 
 # The Bakeoff
 
@@ -76,7 +82,7 @@ python -m medium_data_bakeoff --help
 Run the following to run the full benchmark:
 
 ```commandline
-python -m medium_data_bakeoff make-dataset bakeoff
+python -m medium_data_bakeoff make-dataset && python -m medium_data_bakeoff bakeoff
 ```
 
 ## Docker setup
@@ -89,13 +95,13 @@ Build the docker container and then run the benchmark:
 
 ```commandline
 docker build -t medium-data-bakeoff .
-docker run -t medium-data-bakeoff python -m medium_data_bakeoff bakeoff
+docker run -t medium-data-bakeoff python -m medium_data_bakeoff  && python -m medium_data_bakeoff bakeoff
 ```
 
 Copy the results out of the container
 
 ```commandline
-docker cp medium-data-bakeoff:/app/data/results.* .
+docker cp medium-data-bakeoff:/app/results/* .
 ```
 
 # TODO:
