@@ -1062,7 +1062,7 @@ test = ["appdirs (==1.4.4)", "pytest-cov (>=4)", "pytest-mock (>=3.10)", "pytest
 
 [[package]]
 name = "polars"
-version = "0.14.27"
+version = "0.14.28"
 description = "Blazingly fast DataFrame library"
 category = "main"
 optional = false
@@ -1073,14 +1073,14 @@ typing_extensions = {version = ">=4.0.0", markers = "python_version < \"3.10\""}
 
 [package.extras]
 xlsx2csv = ["xlsx2csv (>=0.8.0)"]
-pyarrow = ["pyarrow (>=4.0.0)"]
-timezone = ["backports.zoneinfo", "tzdata"]
-matplotlib = ["matplotlib"]
-all = ["polars"]
-pandas = ["pyarrow (>=4.0.0)", "pandas"]
 numpy = ["numpy (>=1.16.0)"]
 fsspec = ["fsspec"]
 connectorx = ["connectorx"]
+pyarrow = ["pyarrow (>=4.0.0)"]
+timezone = ["backports.zoneinfo", "tzdata"]
+all = ["polars"]
+pandas = ["pyarrow (>=4.0.0)", "pandas"]
+matplotlib = ["matplotlib"]
 
 [[package]]
 name = "pre-commit"
@@ -1920,7 +1920,7 @@ heapdict = "*"
 [metadata]
 lock-version = "1.1"
 python-versions = "3.9.*"
-content-hash = "42b19c489d40a77ae6c4d17922bd07f119def685bba288c0922d5fefd78ef2a5"
+content-hash = "9af4f1f778b3bd3142ed501ec49514380fcc98d6c95b7362999e3f07f0fe5586"
 
 [metadata.files]
 anyio = []
