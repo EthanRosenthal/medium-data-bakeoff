@@ -11,4 +11,5 @@ def bake(dataset: str) -> float:
     df = spark.read.parquet(*paths)
     res = df.groupBy("station_id").agg({"num_bikes_available": "avg"}).collect()
     stop = time.time()
+    spark.stop()
     return stop - start
