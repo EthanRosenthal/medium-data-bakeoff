@@ -5,7 +5,7 @@ from pyspark.sql import SparkSession
 
 
 def bake(dataset: str) -> float:
-    spark = SparkSession.builder.master("local").getOrCreate()
+    spark = SparkSession.builder.master("local[*]").getOrCreate()
     paths = glob.glob(dataset)
     start = time.time()
     df = spark.read.parquet(*paths)
