@@ -71,7 +71,7 @@ def construct_dataset() -> None:
     # Convert the dataset to parquet
     csvs = list(config.CSV_PATH.iterdir())
     num_partitions = len(csvs)
-    partition_path(num_partitions).mkdir(parnets=True, exist=True)
+    partition_path(num_partitions).mkdir(parents=True, exist_ok=True)
     for csv in tqdm(csvs):
         outfile = partition_path(num_partitions) / csv.with_suffix(".parquet").name
         csv_to_parquet(csv.as_posix(), outfile.as_posix())
