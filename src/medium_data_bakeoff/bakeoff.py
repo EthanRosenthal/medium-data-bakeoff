@@ -96,15 +96,21 @@ def plot_partition_results(results: pd.DataFrame, save_path: Path) -> None:
 
     fig, ax = plt.subplots()
     grouped_time[lib_order].plot.bar(ax=ax)
+    ax.set_title("Partition Benchmark")
+    ax.set_ylabel("Time (s)")
+    ax.set_xlabel("Number of Partitions")
+    # Despine
+    ax.spines["right"].set_visible(False)
+    ax.spines["top"].set_visible(False)
     fig.tight_layout()
 
     fig.savefig(save_path)
 
 
 def partition_bakeoff() -> None:
-    for num_partitions in config.PARTITIONS:
-        logger.info("Running bakeoff for {} partitions.", num_partitions)
-        bakeoff(num_partitions)
+    # for num_partitions in config.PARTITIONS:
+    #     logger.info("Running bakeoff for {} partitions.", num_partitions)
+    #     bakeoff(num_partitions)
     path = config.RESULTS_PATH / "partition_bakeoff"
     path.mkdir(parents=True, exist_ok=True)
 
