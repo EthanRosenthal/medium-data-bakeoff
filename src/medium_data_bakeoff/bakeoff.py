@@ -108,9 +108,9 @@ def plot_partition_results(results: pd.DataFrame, save_path: Path) -> None:
 
 
 def partition_bakeoff() -> None:
-    # for num_partitions in config.PARTITIONS:
-    #     logger.info("Running bakeoff for {} partitions.", num_partitions)
-    #     bakeoff(num_partitions)
+    for num_partitions in config.PARTITIONS:
+        logger.info("Running bakeoff for {} partitions.", num_partitions)
+        bakeoff(num_partitions)
     path = config.RESULTS_PATH / "partition_bakeoff"
     path.mkdir(parents=True, exist_ok=True)
 
