@@ -90,22 +90,25 @@ python -m medium_data_bakeoff make-dataset && python -m medium_data_bakeoff bake
 
 ## Docker setup
 
-_Note: I haven't fully tested this!_
-
 Copy your `kaggle.json` file that you created during the Kaggle setup to the root directory of this repo.
 
-Build the docker container and then run the benchmark:
+Build the docker container:
 
 ```commandline
 docker build -t medium-data-bakeoff .
-docker run -t medium-data-bakeoff python -m medium_data_bakeoff  && python -m medium_data_bakeoff bakeoff
 ```
 
-Copy the results out of the container
+Make the dataset and run the bakeoff while writing data to your local directory.
 
 ```commandline
-docker cp medium-data-bakeoff:/app/results/* .
+mkdir -p results
+docker run -v ${PWD}/results:/app/results/ \
+    -v ${PWD}/data:/app/data/ \
+    -it medium-data-bakeoff \
+    python -m medium_data_bakeoff make-dataset \
+    && python -m medium_data_bakeoff bakeoff
 ```
+
 
 # TODO:
 
