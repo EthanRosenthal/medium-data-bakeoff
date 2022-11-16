@@ -2,23 +2,26 @@
 
 A simple benchmark for python-based data processing libraries.
 
-Guiding Principles:
+## Guiding Principles:
 
 - Python Only: I have no intention of using another language to process data. That said, non-Python implementations with Python bindings are perfectly fine (e.g. Polars).
 - Single Node: I'm not interested in benchmarking performance on clusters of multiple machines.
 - Simple Implementation: I'm not interested in heavily optimizing the benchmarking implementations. My target user is myself: somebody who largely uses pandas but would like to either speed up their computations or work with larger datasets than fit in memory on their machine.
 
 
-Libraries:
+## Libraries:
 
-- ~~[Dask](https://www.dask.org/)~~ Not currently working on my machine (OOM)
+- [Dask*](https://www.dask.org/)
 - [dask-sql](https://dask-sql.readthedocs.io/en/latest/)
 - [DuckDB](https://duckdb.org/)
 - [Polars](https://www.pola.rs/)
 - [Spark](https://spark.apache.org/docs/latest/api/python/)
 - [Vaex](https://vaex.io/)
 
-Results:
+\*Dask required a slight, non-beginner optimization to successfully run it on my machine. Specifically, I had to do "manual column projection" by passing in the relevant calculation columns when reading in the dataset. I consider the Dask results to be slightly cheating, although this hack [may be resolved](https://github.com/dask/dask/issues/7933) natively in Dask in the not so distant future.
+
+
+## Results:
 
 The following results are from running the benchmark locally on my desktop that has:
 - Intel Core i7-7820X 3.6 GHz 8-core Processor (16 virtual cores, I think)
@@ -27,7 +30,7 @@ The following results are from running the benchmark locally on my desktop that 
 
 Original 50-partition dataset:
 
-![assets/benchmark.png](assets/benchmark.png)
+![assets/benchmark_50.png](assets/benchmark_50.png)
 
 Bakeoff as a function of partitions:
 
@@ -43,7 +46,7 @@ Since 2016, I have been pinging the public API every 2 minutes and storing the r
 
 For the benchmark, I first convert the CSVs to snappy-compressed parquet files. This reduces the dataset down to ~4GB in size on disk.
 
-# Computation
+## Computation
 
 To start, the bakeoff computation is extremely simple. It's almost "word count". I calculate the average number of bikes available at each station across the full time period of the dataset. In SQL, this is basically
 
@@ -108,7 +111,6 @@ docker cp medium-data-bakeoff:/app/results/* .
 
 - Run benchmarks on AWS for reproducibility.
 - Run benchmarks as a function of number of CPUs.
-- Run benchmarks as a function of number of parquet files.
 - Add some harder benchmark computations.
 - Add more libraries (e.g. `cudf`).
 - Benchmark memory usage.

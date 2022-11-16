@@ -10,7 +10,13 @@ def bake(dataset: str) -> float:
         client = Client(cluster)
         ProgressBar().register()
         start = time.time()
-        df = dd.read_parquet(dataset, index=False)
+        # NOTE: We pass in the relevant columns for the calculation because Dask
+        # currently does not do predicate pushdown. This is noticeably a bit of a cheat
+        # and not fully in the spirit of the bakeoff given that this is somewhat
+        # advanced knowledge that a user coming from pandas may not have.
+        df = dd.read_parquet(
+            dataset, index=False, columns=["station_id", "num_bikes_available"]
+        )
         df.groupby("station_id")["num_bikes_available"].mean().compute()
         stop = time.time()
         client.close()

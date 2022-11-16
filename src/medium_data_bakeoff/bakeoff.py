@@ -56,10 +56,7 @@ def bakeoff(num_partitions: int) -> None:
     bakeoff = {}
 
     recipe = [
-        # Dask was working on 2022.10.2. It got downgraded to 2022.10.0 after
-        # installing dask-sql, and the benchmark no longer works on my machine. I think
-        # it's running out of memory.
-        # ("dask", bake_dask),
+        ("dask* (slightly optimized)", bake_dask),
         ("dask_sql", bake_dask_sql),
         ("duckdb", bake_duckdb),
         ("polars", bake_polars),
