@@ -18,6 +18,8 @@ kaggle = "1.5.*"
 loguru = "^0.6.0"
 dask-sql = "2022.10.*"
 typer = "0.7.*"
+ray = "2.0"
+modin = {extras = ["ray"], version = "^0.17.0"}
 
 [tool.poetry.dev-dependencies]
 black = "^22.10.0"
