@@ -11,7 +11,7 @@ def bake(dataset: str) -> float:
         modin.config.Engine.put("Dask")
         dataset = str(pathlib.Path(dataset).parent)
         start = time.time()
-        df = pd.read_parquet(dataset, index=False, columns=["station_id", "num_bikes_available"])
+        df = pd.read_parquet(dataset, columns=["station_id", "num_bikes_available"])
         df.groupby("station_id")["num_bikes_available"].mean()
         stop = time.time()
         client.close()

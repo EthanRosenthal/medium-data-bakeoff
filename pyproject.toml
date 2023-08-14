@@ -8,18 +8,19 @@ packages = [
 ]
 
 [tool.poetry.dependencies]
-python = "3.9.*"
-pyspark = {version = "3.3.*", extras = ["sql"]}
-dask = {version = "2022.10.*", extras = ["complete"]}
-vaex = "4.14.*"
-polars = "0.14.28"
-duckdb = "0.5.1"
+python = "^3.11"
+pyspark = {extras = ["sql"], version = "^3.4.1"}
+dask = {extras = ["dataframe", "distributed"], version = "^2023.8.0"}
+polars = "^0.18.14"
+duckdb = "^0.8.1"
 kaggle = "1.5.*"
 loguru = "^0.6.0"
-dask-sql = "2022.10.*"
 typer = "0.7.*"
-ray = "2.0"
-modin = {extras = ["ray"], version = "^0.17.0"}
+ray = {extras = ["default"], version = "^2.6.2"}
+pyarrow = "^12.0.1"
+matplotlib = "^3.7.2"
+modin = {extras = ["ray"], version = "^0.23.0"}
+dask-expr = "^0.1.4"
 
 [tool.poetry.dev-dependencies]
 black = "^22.10.0"
