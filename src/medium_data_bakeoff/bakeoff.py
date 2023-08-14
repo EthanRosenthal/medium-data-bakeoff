@@ -7,14 +7,15 @@ from loguru import logger
 from medium_data_bakeoff import config
 from medium_data_bakeoff.data import partition_path
 from medium_data_bakeoff.ingredients.dask import bake as bake_dask
-from medium_data_bakeoff.ingredients.dask_sql import bake as bake_dask_sql
-from medium_data_bakeoff.ingredients.modin import bake as bake_modin
-from medium_data_bakeoff.ingredients.dask_on_ray import bake as bake_dask_on_ray
+from medium_data_bakeoff.ingredients.dask_auto_optimized import bake as bake_dask_auto_optimized
+from medium_data_bakeoff.ingredients.dask_auto_optimized_on_ray import bake as bake_dask_auto_optimized_on_ray
+from medium_data_bakeoff.ingredients.modin import bake as bake_modin_on_ray
 from medium_data_bakeoff.ingredients.modin_on_dask import bake as bake_modin_on_dask
+# from medium_data_bakeoff.ingredients.dask_sql import bake as bake_dask_sql
+from medium_data_bakeoff.ingredients.dask_on_ray import bake as bake_dask_on_ray
 from medium_data_bakeoff.ingredients.duckdb import bake as bake_duckdb
 from medium_data_bakeoff.ingredients.polars import bake as bake_polars
 from medium_data_bakeoff.ingredients.spark import bake as bake_spark
-from medium_data_bakeoff.ingredients.vaex import bake as bake_vaex
 
 
 def plot_results(results: pd.DataFrame, save_path: Path) -> None:
@@ -60,14 +61,15 @@ def bakeoff(num_partitions: int) -> None:
 
     recipe = [
         ("dask* (slightly optimized)", bake_dask),
+        ("dask (auto-optimized)", bake_dask_auto_optimized),
+        ("dask_on_ray (auto-optimized)", bake_dask_auto_optimized_on_ray),
         ("dask_on_ray* (slightly optimized)", bake_dask_on_ray),
-        ("modin* (slightly optimized)", bake_modin),
+        ("modin* (slightly optimized)", bake_modin_on_ray),
         ("modin_on_dask* (slightly optimized)", bake_modin_on_dask),
-        ("dask_sql", bake_dask_sql),
+        # ("dask_sql", bake_dask_sql),
         ("duckdb", bake_duckdb),
         ("polars", bake_polars),
         ("spark", bake_spark),
-        ("vaex", bake_vaex),
     ]
 
     for name, func in recipe:
