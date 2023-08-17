@@ -1,15 +1,16 @@
 import time
 
 import dask_expr as dd
-from dask.distributed import Client, LocalCluster
+import ray
+from ray.util.dask import enable_dask_on_ray
 
 
 def bake(dataset: str) -> float:
-    with LocalCluster() as cluster:
-        client = Client(cluster)
+    ray.init()
+    with enable_dask_on_ray():
         start = time.time()
         df = dd.read_parquet(dataset)
         df.groupby("station_id")["num_bikes_available"].mean().compute()
         stop = time.time()
-        client.close()
+    ray.shutdown()
     return stop - start
