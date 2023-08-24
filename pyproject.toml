@@ -11,7 +11,7 @@ packages = [
 python = "^3.11"
 pyspark = {extras = ["sql"], version = "^3.4.1"}
 dask = {extras = ["dataframe", "distributed"], version = "^2023.8.0"}
-polars = "^0.18.14"
+polars = "^0.18.15"
 duckdb = "^0.8.1"
 kaggle = "1.5.*"
 loguru = "^0.6.0"
