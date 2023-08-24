@@ -7,13 +7,18 @@ from loguru import logger
 from medium_data_bakeoff import config
 from medium_data_bakeoff.data import partition_path
 from medium_data_bakeoff.ingredients.dask import bake as bake_dask
-from medium_data_bakeoff.ingredients.dask_auto_optimized import bake as bake_dask_auto_optimized
-from medium_data_bakeoff.ingredients.dask_auto_optimized_on_ray import bake as bake_dask_auto_optimized_on_ray
-from medium_data_bakeoff.ingredients.modin import bake as bake_modin_on_ray
-from medium_data_bakeoff.ingredients.modin_on_dask import bake as bake_modin_on_dask
+from medium_data_bakeoff.ingredients.dask_auto_optimized import (
+    bake as bake_dask_auto_optimized,
+)
+from medium_data_bakeoff.ingredients.dask_auto_optimized_on_ray import (
+    bake as bake_dask_auto_optimized_on_ray,
+)
+
 # from medium_data_bakeoff.ingredients.dask_sql import bake as bake_dask_sql
 from medium_data_bakeoff.ingredients.dask_on_ray import bake as bake_dask_on_ray
 from medium_data_bakeoff.ingredients.duckdb import bake as bake_duckdb
+from medium_data_bakeoff.ingredients.modin import bake as bake_modin_on_ray
+from medium_data_bakeoff.ingredients.modin_on_dask import bake as bake_modin_on_dask
 from medium_data_bakeoff.ingredients.polars import bake as bake_polars
 from medium_data_bakeoff.ingredients.spark import bake as bake_spark
 

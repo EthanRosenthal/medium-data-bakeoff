@@ -26,7 +26,7 @@ A simple benchmark for python-based data processing libraries.
 The following results are from running the benchmark locally on my desktop that has:
 - Intel Core i7-7820X 3.6 GHz 8-core Processor (16 virtual cores, I think)
 - 32 GB DDR4-3200 RAM.
-- Ubuntu 16.04 😱
+- Ubuntu 22.04
 
 Original 50-partition dataset:
 
@@ -103,7 +103,7 @@ Make the dataset and run the bakeoff while writing data to your local directory.
 ```commandline
 mkdir -p results
 docker run -v ${PWD}/results:/app/results/ \
-    --shm-size=8gb \
+    --shm-size=10gb \
     -v ${PWD}/data:/app/data/ \
     -it medium-data-bakeoff \
     python -m medium_data_bakeoff make-dataset \
