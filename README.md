@@ -12,13 +12,16 @@ A simple benchmark for python-based data processing libraries.
 ## Libraries:
 
 - [Dask*](https://www.dask.org/)
-- [dask-sql](https://dask-sql.readthedocs.io/en/latest/)
+- ~~[dask-sql](https://dask-sql.readthedocs.io/en/latest/)~~ (does not work with pandas>2.0)
 - [DuckDB](https://duckdb.org/)
 - [Polars](https://www.pola.rs/)
 - [Spark](https://spark.apache.org/docs/latest/api/python/)
-- [Vaex](https://vaex.io/)
+- [Modin](https://modin.readthedocs.io/en/stable/)
+- ~~[Vaex](https://vaex.io/)~~ (not working on python 3.11)
 
 \*Dask required a slight, non-beginner optimization to successfully run it on my machine. Specifically, I had to do "manual column projection" by passing in the relevant calculation columns when reading in the dataset. I consider the Dask results to be slightly cheating, although this hack [may be resolved](https://github.com/dask/dask/issues/7933) natively in Dask in the not so distant future.
+
+Note: there are a couple modin and dask variations. See their implementations for details.
 
 
 ## Results:
